@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!-- To be moved to: C:\ProgramData\Autodesk\Revit\Addins\201x\ or  C:\Users\<username>\AppData\Roaming\Autodesk\Revit\Addins\201x\ -->
 <RevitAddIns>
   <AddIn Type="Application">
     <Name>MyFirstRibbon</Name>

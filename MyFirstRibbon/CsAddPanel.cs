@@ -19,8 +19,7 @@ namespace MyFirstRibbon
 
             // Create a push button to trigger a command add it to the ribbon panel.
             string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
-            PushButtonData buttonData = new PushButtonData("cmdHelloWorld",
-               "Hello World", thisAssemblyPath, "Walkthrough.HelloWorld");
+            PushButtonData buttonData = new PushButtonData("cmdHelloWorld", "Hello World", thisAssemblyPath, "MyFirstRibbon.HelloWorld");
 
             PushButton pushButton = ribbonPanel.AddItem(buttonData) as PushButton;
 
@@ -29,7 +28,7 @@ namespace MyFirstRibbon
             pushButton.ToolTip = "Say hello to the entire world.";
 
             // b) large bitmap
-            Uri uriImage = new Uri(@"D:\Sample\HelloWorld\bin\Debug\39-Globe_32x32.png");
+            Uri uriImage = new Uri(@".\Resources\Globe-32x32.png");
             BitmapImage largeImage = new BitmapImage(uriImage);
             pushButton.LargeImage = largeImage;
 
@@ -49,11 +48,11 @@ namespace MyFirstRibbon
     public class HelloWorld : IExternalCommand
     {
         // The main Execute method (inherited from IExternalCommand) must be public
-        public Autodesk.Revit.UI.Result Execute(ExternalCommandData revit,
+        public Result Execute(ExternalCommandData revit,
             ref string message, ElementSet elements)
         {
             TaskDialog.Show("Revit", "Hello World");
-            return Autodesk.Revit.UI.Result.Succeeded;
+            return Result.Succeeded;
         }
     }
 }
