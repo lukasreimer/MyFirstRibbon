@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>MyFirstRibbon</Name>
+    <Assembly>C:\Users\lreimer\OneDrive\Documents\visual studio 2015\Projects\MyFirstRibbon\MyFirstRibbon\bin\Debug\MyFirstRibbon.dll</Assembly>
+    <FullClassName>MyFirstRibbon.CsAddPanel</FullClassName>
+    <AddInId>a6571826-373f-4ac9-91e4-b7fbd1d7db8d</AddInId>
+    <VendorId>BH.LR</VendorId>
+    <VendorDescription>BuroHappold, LR</VendorDescription>
+  </AddIn>
+</RevitAddIns>
