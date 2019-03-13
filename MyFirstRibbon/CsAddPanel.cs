@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -7,7 +8,7 @@ using System.Windows.Media.Imaging;
 namespace MyFirstRibbon
 {
     /// <remarks>
-    /// This application's main class. The class must be Public.
+    /// This application's main class. The class must be public.
     /// </remarks>
     public class CsAddPanel : IExternalApplication
     {
@@ -28,11 +29,7 @@ namespace MyFirstRibbon
             pushButton.ToolTip = "Say hello to the entire world.";
 
             // b) large bitmap
-            // MyFirstRibbon.Properties.Resources.Globe_32x32;
-            //Uri uriImage = new Uri(@".\Resources\Globe-32x32.png");
-            Uri uriImage = new Uri("/MyFirstRibbon;component/Globe-32x32.png", UriKind.Relative);
-            BitmapImage largeImage = new BitmapImage(uriImage);
-            pushButton.LargeImage = largeImage;
+            pushButton.LargeImage = GetEmbeddedImage("MyFirstRibbon.Resources.Globe-32x32.png");
 
             return Result.Succeeded;
         }
@@ -42,9 +39,26 @@ namespace MyFirstRibbon
             // nothing to clean up in this simple case
             return Result.Succeeded;
         }
+
+        private BitmapFrame GetEmbeddedImage(string path)
+        {
+            // Hint from: https://thebuildingcoder.typepad.com/blog/2009/11/ribbon-embed-image.html
+            try
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                Stream stream = assembly.GetManifestResourceStream(path);
+                BitmapFrame frame = BitmapFrame.Create(stream);
+                return frame;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
+
     /// <remarks>
-    /// The "HelloWorld" external command. The class must be Public.
+    /// The "HelloWorld" external command. The class must be public.
     /// </remarks>
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     public class HelloWorld : IExternalCommand
