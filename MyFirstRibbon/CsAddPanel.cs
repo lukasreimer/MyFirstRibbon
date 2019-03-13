@@ -28,7 +28,9 @@ namespace MyFirstRibbon
             pushButton.ToolTip = "Say hello to the entire world.";
 
             // b) large bitmap
-            Uri uriImage = new Uri(@".\Resources\Globe-32x32.png");
+            // MyFirstRibbon.Properties.Resources.Globe_32x32;
+            //Uri uriImage = new Uri(@".\Resources\Globe-32x32.png");
+            Uri uriImage = new Uri("/MyFirstRibbon;component/Globe-32x32.png", UriKind.Relative);
             BitmapImage largeImage = new BitmapImage(uriImage);
             pushButton.LargeImage = largeImage;
 
